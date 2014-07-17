@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="myApp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-sanitize.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script src="angular.js"></script>
+	</head>
+	
+	<body>
+		<div ng-controller="ChatController">
+			<h1 ng-model="name">Now messaging as: {{ name }}</h1>
+			<form action="">
+				<label>Nickname: <input ng-model="newName" type="text" id="username" autocomplete="off" /></label>
+				<button ng-click="changeName()">Change nick</button>
+			</form>
+			<ul id="messages">
+				<li ng-repeat="message in messages"><span>{{ message.user }}: </span><span ng-bind-html="message.text | linky"></span></li>
+			</ul>
+			<form action="">
+				<label>Message: <input ng-model="message" type="text" id="m" autocomplete="off" /></label>
+				<button ng-click="sendMessage()">Send</button>
+			</form>
+		</div>
+
+		<div ng-controller="LinkController">
+			<h1>LINKS</h1>
+			<ul id="links">
+				<li ng-repeat="link in links">{{ link.user }} linked: <span ng-bind-html="link.url | linky"></span></li>
+			</ul>
+		</div>
+	</body>
+
+</html>
