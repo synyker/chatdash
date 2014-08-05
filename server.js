@@ -7,7 +7,11 @@ var users = {};
 var links = [];
 
 app.get('/', function(req, res) {
-	res.sendfile('index.html');
+	res.sendfile(__dirname + '/index.html');
+});
+
+app.get('/angular.js', function(req, res) {
+	res.sendfile(__dirname + '/angular.js');
 });
 
 io.on('connection', function(socket) {
