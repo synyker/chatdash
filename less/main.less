@@ -1,0 +1,62 @@
+#map, map, div[map] {
+	display:block;
+	width:630px;
+	height:300px;
+}
+
+body {
+	background-color: #40008E;
+	font-family: monospace;
+}
+
+h1 {
+	font-size: 20px;
+	margin: 5px 0;
+}
+
+ul {
+	list-style: none;
+}
+
+.container {
+	width: 580px;
+	margin: 0 auto;
+	padding: 25px;
+	&.map {
+		width: 630px;
+		border: 20px solid #1f5fc1;
+		padding: 0;	
+	}
+	&.chat {
+		background-color: #ef9a11;
+  		border: 20px solid #de8900;	
+	}
+	&.links {
+		background-color: #a1de24;
+  		border: 20px solid #90cd13;
+	}
+}
+
+@media only screen 
+and (max-width: 1000px) {
+	body {
+		
+	}
+	#map, map, div[map] {
+		width: 100%;
+	}
+	.container {
+		width: 90%;
+		&.map {
+			width: 90%;
+			border-left-width: 45px;
+			border-right-width: 45px;
+		}
+	}
+}
+
+#messages, #links {
+	height: 100px;
+	max-height: 100px;
+	overflow-y: scroll;
+}

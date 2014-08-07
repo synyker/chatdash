@@ -1,41 +1,5 @@
 var app = angular.module('myApp', ['ngSanitize', 'ngMap']);
 
-app.factory('socket', function($rootScope) {
-	var socket = io('http://192.96.201.109:10967');
-	return {
-		on: function(eventName, callback) {
-			socket.on(eventName, function() {
-				var args = arguments;
-				$rootScope.$apply(function() {
-					callback.apply(socket, args);
-				});
-			});
-		},
-		emit: function(eventName, data, callback) {
-			socket.emit(eventName, data, function() {
-				var args = arguments;
-				$rootScope.$apply(function() {
-					if (callback) {
-						callback.apply(socket, args);
-					}
-				});
-			});
-		}
-	}
-});
-
-app.factory('gmap', function($rootScope) {
-
-	var options = {
-		zoom : 13,
-		center : new google.maps.LatLng(60.2, 24.9),
-		mapTypeId : google.maps.MapTypeId.ROADMAP		
-	};
-
-	return new google.maps.Map($('#map')[0], options);
-
-});
-
 app.controller('MapController', function($scope, gmap, socket) {
 
 	$scope.markers = [];
@@ -57,11 +21,7 @@ app.controller('MapController', function($scope, gmap, socket) {
 		$scope.markers = [];
 
 		for (var key in $scope.users) {
-			var user = $scope.users[key];
-			console.log(user);
-			console.log(user.coords.lat);
-			console.log(user.coords.lon);
-
+			user = $scope.users[key];
 			var center = new google.maps.LatLng(user.coords.lat, user.coords.lon)
 
 			$scope.markers.push(new google.maps.Marker({
@@ -88,8 +48,8 @@ app.controller('MapController', function($scope, gmap, socket) {
 	        		user: $scope.name,
 	        		userId: $scope.userId,
 	        		coords: {
-	        			lat: $scope.lat, 
-	        			lon: $scope.lon 
+	        			lat: $scope.lat,
+	        			lon: $scope.lon
 	        		}
 	        	});
       		});

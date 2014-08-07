@@ -1,47 +1,57 @@
-#map, map, div[map] {
-	display:block;
-	width:600px;
-	height:300px;
+#map,
+map,
+div[map] {
+  display: block;
+  width: 630px;
+  height: 300px;
 }
-
 body {
-	background-color: #40008E;
-	font-family: monospace;
+  background-color: #40008E;
+  font-family: monospace;
 }
-
 h1 {
-	font-size: 20px;
-	margin: 5px 0;
+  font-size: 20px;
+  margin: 5px 0;
 }
-
 ul {
-	list-style: none;
+  list-style: none;
 }
-
 .container {
-	width: 580px;
-	margin: 0 auto;
-	padding: 10px;
+  width: 580px;
+  margin: 0 auto;
+  padding: 25px;
 }
-
 .container.map {
-	width: 600px;
-	border: 10px solid #1f5fc1;
-	padding: 0;
+  width: 630px;
+  border: 20px solid #1f5fc1;
+  padding: 0;
 }
-
 .container.chat {
-  	background-color: #ef9a11;
-  	border: 10px solid #de8900;
+  background-color: #ef9a11;
+  border: 20px solid #de8900;
 }
-
-#messages, #links {
-	height: 100px;
-	max-height: 100px;
-	overflow-y: scroll;
-}
-
 .container.links {
-  	background-color: #a1de24;
-  	border: 10px solid #90cd13;
+  background-color: #a1de24;
+  border: 20px solid #90cd13;
+}
+@media only screen and (max-width: 1000px) {
+  #map,
+  map,
+  div[map] {
+    width: 100%;
+  }
+  .container {
+    width: 90%;
+  }
+  .container.map {
+    width: 90%;
+    border-left-width: 45px;
+    border-right-width: 45px;
+  }
+}
+#messages,
+#links {
+  height: 100px;
+  max-height: 100px;
+  overflow-y: scroll;
 }
