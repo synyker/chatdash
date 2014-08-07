@@ -1,7 +1,7 @@
 var app = angular.module('myApp', ['ngSanitize', 'ngMap']);
 
 app.factory('socket', function($rootScope) {
-	var socket = io('http://localhost:3000');
+	var socket = io('http://192.96.201.109:10967');
 	return {
 		on: function(eventName, callback) {
 			socket.on(eventName, function() {
@@ -57,7 +57,11 @@ app.controller('MapController', function($scope, gmap, socket) {
 		$scope.markers = [];
 
 		for (var key in $scope.users) {
-			user = $scope.users[key];
+			var user = $scope.users[key];
+			console.log(user);
+			console.log(user.coords.lat);
+			console.log(user.coords.lon);
+
 			var center = new google.maps.LatLng(user.coords.lat, user.coords.lon)
 
 			$scope.markers.push(new google.maps.Marker({
@@ -84,8 +88,8 @@ app.controller('MapController', function($scope, gmap, socket) {
 	        		user: $scope.name,
 	        		userId: $scope.userId,
 	        		coords: {
-	        			lat: $scope.lat,
-	        			lon: $scope.lon
+	        			lat: $scope.lat, 
+	        			lon: $scope.lon 
 	        		}
 	        	});
       		});

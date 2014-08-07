@@ -14,6 +14,11 @@ app.get('/angular.js', function(req, res) {
 	res.sendfile(__dirname + '/angular.js');
 });
 
+app.get('/styles.css', function(req, res) {
+        res.sendfile(__dirname + '/styles.css');
+});
+
+
 io.on('connection', function(socket) {
 	
 	users[socket.id] = {
@@ -54,7 +59,12 @@ io.on('connection', function(socket) {
 
 	socket.on('update:location', function(data) {
 		
-		users[data.userId].coords = data.coords;
+		console.log(users);
+		console.log(data);	
+		if (users[data.userId]) {
+			users[data.userId].coords = data.coords;
+		}
+		console.log(users[data.userId]);
 		console.log('sending users: ');
 		io.emit('update:users', users);
 	});
@@ -85,6 +95,6 @@ var parseUrls = function(text, user) {
 	return false;
 }
 
-http.listen('3000', function() {
-	console.log('listeing on :3000');
+http.listen('10967', function() {
+	console.log('listening on :3000');
 });
